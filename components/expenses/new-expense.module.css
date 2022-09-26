@@ -1,0 +1,24 @@
+.container {
+    flex: 1;
+    padding: 1rem;
+    box-shadow: var(--shadow-global);
+    border-radius: 0.5rem;
+}
+
+.form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.name {
+    flex-basis: 100%;
+}
+
+.amount {
+    flex: 1;
+}
+
+.type {
+    flex: 1;
+}

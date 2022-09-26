@@ -30,8 +30,8 @@ const Sum = () => {
   
 
   return (
-    <section className={styles.container}>
-        <h2>Sum</h2>
+    <section className={`${styles.container} ${expensesCtx.sum[activeCurrency] < 0 ? styles.negative : styles.positive}`}>
+        <h2 className={styles.title}>Sum</h2>
         {/* // Todo: the sum color is depends on negative positive amount */}
         <h3 className={styles.sum}>{expensesCtx.sum[activeCurrency]} {activeCurrency}</h3> 
         <div className={styles.list}>

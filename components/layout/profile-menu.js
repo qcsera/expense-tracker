@@ -65,8 +65,6 @@ export default function ProfileMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
-  console.log(activeCurrency)
-
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };

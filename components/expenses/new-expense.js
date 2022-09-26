@@ -40,6 +40,8 @@ const NewExpense = () => {
     date = date.toLocaleString()
     // const date = newDate()
 
+
+
     fetch('/api/expense', {
       method: 'POST',
       body: JSON.stringify({
@@ -63,7 +65,7 @@ const NewExpense = () => {
       if (event.code === "Enter" || event.code === "NumpadEnter") {
         
         event.preventDefault();
-        // callMyFunction();
+        
         sendExpenseHandler(event)
       }
     };

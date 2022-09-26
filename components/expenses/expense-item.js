@@ -8,7 +8,6 @@ import ExpensesContext from "../../store/expenses-context";
 import CurrencyContext from "../../store/currency-context";
 
 import useCalculate from '../../hooks/useCalculate'
-import { formatDate } from '../../utils/formatDate'
 
 
 const ExpenseItem = ({ item }) => {

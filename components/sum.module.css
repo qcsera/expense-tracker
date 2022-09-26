@@ -8,7 +8,6 @@
 
 .sum {
     font-size: 1.5rem;
-    color: green;
     text-align: center;
 }
 
@@ -31,4 +30,18 @@
 
 .show {
     display: block;
+}
+
+.positive {
+    background-color: #efe;
+    color: green
+}
+
+.negative {
+    background-color: #fee;
+    color:crimson
+}
+
+.title {
+    color: black
 }

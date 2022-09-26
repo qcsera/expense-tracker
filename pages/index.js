@@ -48,6 +48,10 @@ export default function Home(props) {
     expensesCtx.sumCalculate(activeCurrency, rates)
   },[expensesCtx.expenses, activeCurrency])
 
+  useEffect(() => {
+    currencyCtx.setActiveCurrency(activeCurrency)
+  },[activeCurrency])
+
   if (loading) {
     return <p>Loading ...</p>;
   }

@@ -1,0 +1,11 @@
+.container {
+  box-shadow: var(--shadow-global);
+  border-radius: 0.5rem;
+  padding: 2rem;
+  margin: 2rem;
+  margin-top: 6rem;
+}
+
+.form {
+  width: 100%;
+}

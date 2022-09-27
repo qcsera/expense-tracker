@@ -1,24 +1,27 @@
 .container {
-    flex: 1;
-    padding: 1rem;
-    box-shadow: var(--shadow-global);
-    border-radius: 0.5rem;
+  flex: 1;
+  padding: 1rem;
+  box-shadow: var(--shadow-global);
+  border-radius: 0.5rem;
 }
 
-.form {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-}
+/* .form {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+} */
 
 .name {
-    flex-basis: 100%;
+  flex-basis: 100%;
+  min-height: 65px;
+  display: block;
 }
 
 .amount {
-    flex: 1;
+  flex: 1;
 }
 
 .type {
-    flex: 1;
+  flex: 1;
 }

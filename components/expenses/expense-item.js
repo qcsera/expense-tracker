@@ -7,8 +7,7 @@ import styles from "./expense-item.module.css";
 import ExpensesContext from "../../store/expenses-context";
 import CurrencyContext from "../../store/currency-context";
 
-import useCalculate from '../../hooks/useCalculate'
-
+import useCalculate from "../../hooks/useCalculate";
 
 const ExpenseItem = ({ item }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -16,11 +15,10 @@ const ExpenseItem = ({ item }) => {
   const expensesCtx = useContext(ExpensesContext);
   const currencyCtx = useContext(CurrencyContext);
 
-  const activeCurrency = currencyCtx.activeCurrency
-  const rates = currencyCtx.rates
+  const activeCurrency = currencyCtx.activeCurrency;
+  const rates = currencyCtx.rates;
 
-  const [calculatedAmounts] = useCalculate(item.amount, activeCurrency, rates)
-  
+  const [calculatedAmounts] = useCalculate(item.amount, activeCurrency, rates);
 
   const handleDelete = (id) => {
     fetch("/api/expense", {
@@ -86,9 +84,9 @@ const ExpenseItem = ({ item }) => {
         onMouseEnter={handlePopoverOpen}
         onMouseLeave={handlePopoverClose}
         className={styles.amount}
+        sx={{ fontSize: 12, fontWeight: "bold" }}
       >
         {calculatedAmounts[activeCurrency]?.toFixed(2)} {activeCurrency}
-        
       </Typography>
       <div onClick={() => handleDelete(item._id)}>
         <DeleteIcon />

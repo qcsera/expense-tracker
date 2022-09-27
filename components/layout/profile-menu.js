@@ -1,4 +1,4 @@
-import React, { useContext, useEffect} from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useSession, signOut } from "next-auth/client";
 
 import { styled, alpha } from "@mui/material/styles";
@@ -59,6 +59,8 @@ const StyledMenu = styled((props) => (
 }));
 
 export default function ProfileMenu() {
+  const [curr, setCurr] = useState("HUF");
+
   const currencyCtx = useContext(CurrencyContext);
   let activeCurrency = currencyCtx.activeCurrency;
 
@@ -78,11 +80,11 @@ export default function ProfileMenu() {
 
   const logoutHandler = () => {
     signOut();
-  }
+  };
 
-  // useEffect(() => {
-  //   currencyCtx.setActiveCurrency(currency);
-  // },[])
+  useEffect(() => {
+    setCurr(activeCurrency);
+  }, [activeCurrency]);
 
   return (
     <div>
@@ -107,40 +109,58 @@ export default function ProfileMenu() {
         open={open}
         onClose={() => handleClose(activeCurrency)}
       >
-        <MenuItem
-          onClick={() => handleClose("EUR")}
-          disableRipple
-          className={`${activeCurrency === "EUR" ? styles.hide : styles.show}`}
-        >
-          <CurrencyEuroIcon />
-          EUR
-        </MenuItem>
-        <MenuItem
-          onClick={() => handleClose("USD")}
-          disableRipple
-          className={`${activeCurrency === "USD" ? styles.hide : styles.show}`}
-        >
-          <CurrencyDollarIcon />
-          USD
-        </MenuItem>
-        <MenuItem
-          onClick={() => handleClose("GBP")}
-          disableRipple
-          className={`${activeCurrency === "GBP" ? styles.hide : styles.show}`}
-        >
-          <CurrencyPoundIcon />
-          GBP
-        </MenuItem>
-        <MenuItem
-          onClick={() => handleClose("HUF")}
-          disableRipple
-          className={`${activeCurrency === "HUF" ? styles.hide : styles.show}`}
-        >
-          <span style={{ marginLeft: 2, marginRight: "0.9rem", color: "gray" }}>
-            Ft
-          </span>
-          HUF
-        </MenuItem>
+        {activeCurrency !== "EUR" ? (
+          <MenuItem
+            onClick={() => handleClose("EUR")}
+            disableRipple
+            // className={`${curr === "EUR" ? styles.hide : styles.show}`}
+          >
+            <CurrencyEuroIcon />
+            EUR
+          </MenuItem>
+        ) : (
+          ""
+        )}
+        {activeCurrency !== "USD" ? (
+          <MenuItem
+            onClick={() => handleClose("USD")}
+            disableRipple
+            className={`${curr !== "USD" ? styles.hide : styles.show}`}
+          >
+            <CurrencyDollarIcon />
+            USD
+          </MenuItem>
+        ) : (
+          ""
+        )}
+        {activeCurrency !== "GBP" ? (
+          <MenuItem
+            onClick={() => handleClose("GBP")}
+            disableRipple
+            className={`${curr === "GBP" ? styles.hide : styles.show}`}
+          >
+            <CurrencyPoundIcon />
+            GBP
+          </MenuItem>
+        ) : (
+          ""
+        )}
+        {activeCurrency !== "HUF" ? (
+          <MenuItem
+            onClick={() => handleClose("HUF")}
+            disableRipple
+            className={`${curr === "HUF" ? styles.hide : styles.show}`}
+          >
+            <span
+              style={{ marginLeft: 2, marginRight: "0.9rem", color: "gray" }}
+            >
+              Ft
+            </span>
+            HUF
+          </MenuItem>
+        ) : (
+          ""
+        )}
 
         <Divider sx={{ my: 0.5 }} />
         <MenuItem onClick={logoutHandler} disableRipple>
